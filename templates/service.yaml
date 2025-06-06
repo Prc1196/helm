@@ -12,4 +12,6 @@ spec:
   - protocol: TCP
     port: 80  #service port
     targetPort: 80
-    nodePort: {{ .Values.service.nodeport }}   #[practice purpose= imagine this will change]
+    type: {{ .Values.service.type }}
+    nodePort: {{ .Values.service.nodePort }} 
+    #nodePort: {{ .Values.service.nodePort }}  #[practice purpose= imagine this will change]
