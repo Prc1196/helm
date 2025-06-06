@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  # lables of deployment resource
+  labels:
+    app: nginx
+    tier: frontend
+    purpose: deployment
+spec:
+  replicas: {{ .Values.deployment.replicas }} #assume this will change (HPA= horizantol pod auto scaling)
+  selector:
+    matchLabels:
+      app: nginx
+      tier: frontend
+      purpose: deployment
+  template:
+    metadata:
+      labels:
+        app: nginx
+        tier: frontend
+        purpose: deployment
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:{{ .Values.deployment.imageVersion }} #image will not change frequently but version will change
+        ports:
+        - containerPort: 80
