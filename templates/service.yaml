@@ -3,8 +3,7 @@ apiVersion: v1
 metadata:
   name: nginx
 spec:
-  type: {{ .Values.service.type }}
-  #type: LoadBalancer
+  type: LoadBalancer
   selector:   #lables are used as selectors
     app: nginx
     tier: frontend
@@ -13,5 +12,5 @@ spec:
   - protocol: TCP
     port: 80  #service port
     targetPort: 80
-    nodePort: {{ .Values.service.nodePort }} 
-    #nodePort: {{ .Values.service.nodePort }}  #[practice purpose= imagine this will change]
+    nodePort: {{ .Values.service.nodePort }} #[practice purpose= imagine this will change]
+                                             
